@@ -1,0 +1,108 @@
+<div class="h-100 d-flex flex-column align-items-center justify-content-center" id="register-page">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Please fill the following form to register to our services</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="registrationForm">
+        <div class="card-shadow">
+          <div class="card-body">
+            <div class="row mt-3">
+              <div class="col-md-12">
+                <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>First Name</mat-label>
+                  <input matInput formControlName="firstname">
+                  <mat-hint>Please write your first name</mat-hint>
+                  <mat-error>This is a required field</mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col-md-12">
+                <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>Last Name</mat-label>
+                  <input matInput formControlName="lastname">
+                  <mat-hint>Please write your last name</mat-hint>
+                  <mat-error>This is a required field</mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col-md-12">
+                <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>Username</mat-label>
+                  <input matInput formControlName="username">
+                  <mat-hint>Please write your username</mat-hint>
+                  <mat-error>This is a required field</mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col-md-12">
+                <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>Password</mat-label>
+                  <input matInput formControlName="password" type="password">
+                  <mat-hint>Please write your password</mat-hint>
+                  <mat-error *ngIf="registrationForm.controls['password'].hasError('required')">
+                    This is a required field
+                  </mat-error>
+                  <mat-error *ngIf="registrationForm.controls['password'].errors && !registrationForm.controls['password'].hasError('required')">
+                    This password is invalid
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col-md-12">
+                <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>Confirm Password</mat-label>
+                  <input matInput formControlName="confirmPassword" type="password">
+                  <mat-hint>Please write your password</mat-hint>
+                  <mat-error *ngIf="registrationForm.controls['confirmPassword'].hasError('required')">
+                    This is a required field
+                  </mat-error>
+                  <mat-error *ngIf="registrationForm.controls['confirmPassword'].errors && !registrationForm.controls['confirmPassword'].hasError('required')">
+                    This password is invalid
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col-md-12">
+                <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>Email</mat-label>
+                  <input matInput formControlName="email">
+                  <mat-hint>Please write your email</mat-hint>
+                  <mat-error *ngIf="registrationForm.controls['email'].hasError('required')">
+                    This is a required field
+                  </mat-error>
+                  <mat-error *ngIf="registrationForm.controls['email'].errors && !registrationForm.controls['email'].hasError('required')">
+                    This email is invalid
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col-md-12">
+                <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>Phonenumber</mat-label>
+                  <input matInput formControlName="phoneNumber">
+                  <mat-hint>Please write your phonenumber</mat-hint>
+                  <mat-error *ngIf="registrationForm.controls['phoneNumber'].hasError('required')">
+                    This is a required field
+                  </mat-error>
+                  <mat-error *ngIf="registrationForm.controls['phoneNumber'].errors && !registrationForm.controls['phoneNumber'].hasError('required')">
+                    The phonenumber must be 10 characters long 
+                  </mat-error>
+                </mat-form-field>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </form>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="d-flex w-100 flex-wrap flex-row justify-content-end align-items-center">
+            <div class="d-flex m-2">
+              <button [disabled]="registrationForm.invalid" (click)="registerUser()" class="btn btn-lg btn-primary">
+                Register
+              </button>
+            </div>
+            <div class="d-flex m-2">
+              <a routerLink="/" class="btn btn-lg btn-primary">Back</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

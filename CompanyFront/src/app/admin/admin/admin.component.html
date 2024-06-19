@@ -1,0 +1,58 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport="true"
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="!(isHandset$ | async)"
+  >
+    <mat-toolbar style="width: 16rem"
+    >
+      <a class="navbar-brand" routerLink="home">
+        <img src="assets/images/logo-1.png" alt="company-logo" class="logo">
+      </a>
+      <span class="spacer"></span>
+      <button
+        mat-icon-button
+        (click)="drawer.close()"
+        *ngIf="isHandset$ | async"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-toolbar>
+    <mat-nav-list>
+      <mat-expansion-panel
+        style="box-shadow: none; font-size: 16px; margin-left: 0"
+      >
+        <mat-expansion-panel-header>
+          <mat-panel-title>Management</mat-panel-title>
+        </mat-expansion-panel-header>
+        <a mat-list-item routerLink="home">Home</a>
+        <a mat-list-item routerLink="employees">Employees</a>
+        <a mat-list-item routerLink="projects">Projects</a>
+        <a mat-list-item routerLink="manage-assignments">Manage Assignments</a>
+      </mat-expansion-panel>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content style="display: flex; flex-direction: column; gap: 1rem">
+    <mat-toolbar id="toolbar" class="radiant-background d-flex justify-content-around">
+      <button
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async"
+        style="margin-right: 1rem"
+      >
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span class="text-light">ProgTech Task Management System</span>
+      <button class="btn btn-primary" (click)="logout()">Log Out</button>
+    </mat-toolbar>
+    <div class="container">
+        <router-outlet class="h-100 d-flex flex-column align-items-center justify-content-center"></router-outlet>
+    </div>
+    <footer class="footer">
+      <app-footer></app-footer>
+    </footer>
+  </mat-sidenav-content>
+</mat-sidenav-container>

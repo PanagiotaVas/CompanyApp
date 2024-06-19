@@ -1,0 +1,39 @@
+<h2 mat-dialog-title>Insert new Task</h2>
+<mat-dialog-content class="mat-typography">
+  <form [formGroup]="insertProjectForm">
+    <div class="container m-0 p-0">
+      <div class="row">
+        <div class="col-md-12 py-2">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Title</mat-label>
+            <input matInput formControlName="title">
+            <mat-hint>Please write the title of the task</mat-hint>
+            <mat-error>This is a required field</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-md-12 py-2">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Description</mat-label>
+            <input matInput formControlName="description">
+            <mat-hint>Please write the description of the task</mat-hint>
+            <mat-error>This is a required field</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-md-12 py-2">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Deadline</mat-label>
+            <input matInput [matDatepicker]="deadline" formControlName="deadline">
+            <mat-hint>Please write the deadline of the task</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="deadline"></mat-datepicker-toggle>
+            <mat-datepicker #deadline></mat-datepicker>
+            <mat-error>This is a required field</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button [mat-dialog-close]="true" class="btn btn-outline-primary mx-3">Close</button>
+  <button [disabled]="insertProjectForm.invalid" (click)="saveProject()" class="btn btn-outline-primary">Insert</button>
+</mat-dialog-actions>

@@ -1,0 +1,45 @@
+<h2 mat-dialog-title>Create new Employee</h2>
+<mat-dialog-content class="mat-typography">
+  <form [formGroup]="updateEmployeeForm">
+    <div class="container m-0 p-0">
+      <div class="row">
+        <div class="col-md-12 py-2">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>First Name</mat-label>
+            <input matInput formControlName="firstname">
+            <mat-hint>Please write the first name of the employee</mat-hint>
+            <mat-error>This is a required field</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-md-12 py-2">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Last Name</mat-label>
+            <input matInput formControlName="lastname">
+            <mat-hint>Please write the last name of the employee</mat-hint>
+            <mat-error>This is a required field</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-md-12 py-2">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Email</mat-label>
+            <input type="email" matInput formControlName="email">
+            <mat-hint>Please write the email of the employee</mat-hint>
+            <mat-error>This is a required field</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-md-12 py-2">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Phone Number</mat-label>
+            <input matInput formControlName="phoneNumber">
+            <mat-hint>Please write the phone number of the employee</mat-hint>
+            <mat-error>This is a required field</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button [mat-dialog-close]="true" class="btn btn-outline-primary mx-3">Close</button>
+  <button [disabled]="updateEmployeeForm.invalid" (click)="saveEmployee()" class="btn btn-outline-primary">Update</button>
+</mat-dialog-actions>

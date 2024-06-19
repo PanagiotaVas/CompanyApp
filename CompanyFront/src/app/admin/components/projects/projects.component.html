@@ -1,0 +1,40 @@
+<mat-card *ngIf="tasks; else nodata" class="mb-4 card-shadow class.mat-elevation-z8">
+  <mat-card-header class="d-flex justify-content-between align-items-center">
+    <mat-card-title>Projects Management</mat-card-title>
+    <button class="btn btn-outline-primary btn-lg" (click)="openCreateProjectModal()">Insert Project</button>
+  </mat-card-header>
+  <mat-card-content class="mt-5">
+    <table *ngIf="tasks; else nodata" mat-table [dataSource]="dataSource" class="demo-table">
+      <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef>Title</th>
+        <td mat-cell *matCellDef="let element">{{element.title}}</td>
+      </ng-container>
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef>Description</th>
+        <td mat-cell *matCellDef="let element">{{element.description}}</td>
+      </ng-container>
+      <ng-container matColumnDef="deadline">
+        <th mat-header-cell *matHeaderCellDef>Deadline</th>
+        <td mat-cell *matCellDef="let element">{{element.deadline}}</td>
+      </ng-container>
+      <ng-container matColumnDef="actions">
+        <th class="text-center" style="width: 80px" mat-header-cell *matHeaderCellDef>Actions</th>
+        <td mat-cell *matCellDef="let element" class="d-flex justify-content-center align-items-center mt-4">
+          <button class="btn btn-outline-primary btn-sm" type="button" (click)="openEditModal(element)">
+            <i class="bi bi-pencil-square"></i>
+          </button>
+          <button class="btn btn-outline-danger btn-sm mx-2" type="button" (click)="deleteProject(element)">
+            <i class="bi bi-trash"></i>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="this.displayColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: this.displayColumns"></tr>
+    </table>
+  </mat-card-content>
+</mat-card>
+
+<ng-template #nodata>
+  <div class="alert alert-danger">You have no projects for now for now</div>
+</ng-template>

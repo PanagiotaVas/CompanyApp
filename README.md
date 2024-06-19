@@ -6,7 +6,7 @@ Database : SQL Server <br>
 Backend : API C# .NET <br>
 Frontend : Angular <br> <br>
 
-https://github.com/PanagiotaVas/CompanyApp
 
+<a href="https://github.com/PanagiotaVas/CompanyApp">https://github.com/PanagiotaVas/CompanyApp</a>
 
 
